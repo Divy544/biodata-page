@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marriage Biodata</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Decorative Elements */
+        .ganesha-symbol {
+            text-align: center;
+            font-size: 48px;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        /* Add OM splash page styling */
+        .om-splash {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(139, 58, 58, 0.08) 100%);
+            border-bottom: 4px solid #d4af37;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .om-container {
+            text-align: center;
+            animation: float 6s ease-in-out infinite, glow 3s ease-in-out infinite;
+        }
+
+        .om-symbol {
+            font-size: 200px;
+            color: #8b3a3a;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 15px rgba(139, 58, 58, 0.15);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 4px 15px rgba(139, 58, 58, 0.15), 0 0 20px rgba(212, 175, 55, 0.3);
+            }
+            50% {
+                text-shadow: 0 4px 15px rgba(139, 58, 58, 0.3), 0 0 30px rgba(212, 175, 55, 0.5);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        @keyframes rotateBorder {
+            from {
+                border-color: #d4af37;
+            }
+            to {
+                border-color: #8b3a3a;
+            }
+        }
+
+        .floral-corner {
+            position: fixed;
+            font-size: 60px;
+            opacity: 0.15;
+            color: #8b3a3a;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floral-top-left {
+            top: 0;
+            left: 0;
+        }
+
+        .floral-top-right {
+            top: 0;
+            right: 0;
+        }
+
+        .floral-bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+
+        .floral-bottom-right {
+            bottom: 0;
+            right: 0;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(139, 58, 58, 0.05) 100%);
+            border-top: 4px solid #d4af37;
+            border-bottom: 2px solid #8b3a3a;
+            padding: 30px 20px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header-divider {
+            width: 60px;
+            height: 2px;
+            background-color: #d4af37;
+            margin: 15px auto;
+        }
+
+        .name-display {
+            font-size: 48px;
+            font-weight: 700;
+            color: #8b3a3a;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 16px;
+            color: #d4af37;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* Photo Slider */
+        .photo-slider-container {
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+            padding: 20px;
+            animation: slideInUp 0.8s ease-out 0.3s both;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            overflow: hidden;
+            border: 8px solid #d4af37;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 3/4;
+            background-color: #f5f5f5;
+            animation: scaleIn 0.8s ease-out, pulse 2s infinite;
+        }
+
+        .slider-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f5f5;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e8dcc8 0%, #d4af37 100%);
+            color: #8b3a3a;
+            font-size: 14px;
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .control-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            background-color: #ffffff;
+            color: #8b3a3a;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: scaleIn 0.6s ease-out;
+        }
+
+        .control-btn:hover {
+            animation: pulse 1s infinite;
+        }
+
+        .control-btn:active {
+            transform: translateY(0);
+        }
+
+        .slider-dots {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #d4af37;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Section Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            padding: 40px;
+            background-color: #fafaf9;
+            border-left: 6px solid #d4af37;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            animation: slideInLeft 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #8b3a3a;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+            animation: slideInRight 0.7s ease-out;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 2px;
+            background-color: #d4af37;
+        }
+
+        /* Personal Details */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .detail-item {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 4px;
+            border-top: 3px solid #d4af37;
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .detail-item:nth-child(1) { animation-delay: 0.1s; }
+        .detail-item:nth-child(2) { animation-delay: 0.2s; }
+        .detail-item:nth-child(3) { animation-delay: 0.3s; }
+        .detail-item:nth-child(4) { animation-delay: 0.4s; }
+        .detail-item:nth-child(5) { animation-delay: 0.5s; }
+        .detail-item:nth-child(6) { animation-delay: 0.6s; }
+        .detail-item:nth-child(7) { animation-delay: 0.7s; }
+        .detail-item:nth-child(8) { animation-delay: 0.8s; }
+        .detail-item:nth-child(9) { animation-delay: 0.9s; }
+
+        .detail-label {
+            font-size: 12px;
+            color: #8b3a3a;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .detail-value {
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Family & Education Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            font-size: 16px;
+        }
+
+        .data-table thead {
+            background-color: #8b3a3a;
+            color: #ffffff;
+        }
+
+        .data-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .data-table tr {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .data-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+        .data-table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+        .data-table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+        .data-table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+
+        .data-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #8b3a3a 0%, #5c2626 100%);
+            color: #d4af37;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 4px solid #d4af37;
+            animation: slideInUp 0.8s ease-out 0.5s both;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-divider {
+            width: 60px;
+            height: 2px;
+            background-color: #d4af37;
+            margin: 15px auto 20px;
+        }
+
+        .footer-contact {
+            font-size: 14px;
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .om-symbol {
+                font-size: 120px;
+            }
+
+            .name-display {
+                font-size: 36px;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .data-table {
+                font-size: 14px;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px;
+            }
+
+            .floral-corner {
+                font-size: 40px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: #ffffff;
+            }
+
+            .floral-corner {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative Floral Corners -->
+    <div class="floral-corner floral-top-left">❀</div>
+    <div class="floral-corner floral-top-right">❀</div>
+    <div class="floral-corner floral-bottom-left">❀</div>
+    <div class="floral-corner floral-bottom-right">❀</div>
+
+    <!-- OM Splash Page -->
+    <div class="om-splash">
+        <div class="om-container">
+            <div class="om-symbol">ॐ</div>
+        </div>
+    </div>
+
+    <!-- Photo Slider -->
+    <div class="photo-slider-container">
+        <div class="slider-wrapper">
+            <div class="slider-inner" id="sliderInner">
+                <!-- Replace placeholder slides with actual photos -->
+                <div class="slide active">
+                    <img src="/images/img-20251130-133726.jpg" alt="Profile Photo 1">
+                </div>
+                <div class="slide">
+                    <img src="/images/img-20251130-130404.jpg" alt="Profile Photo 2">
+                </div>
+                <div class="slide">
+                    <img src="/images/img-20251205-052707-333.webp" alt="Profile Photo 3">
+                </div>
+            </div>
+
+            <!-- Dots -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+
+            <!-- Controls -->
+            <div class="slider-controls">
+                <button class="control-btn" onclick="changeSlide(-1)">‹</button>
+                <button class="control-btn" onclick="changeSlide(1)">›</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Personal Details Section -->
+        <div class="section">
+            <h2 class="section-title">Personal Details</h2>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <div class="detail-label">Name</div>
+                    <div class="detail-value">Your Name</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Age</div>
+                    <div class="detail-value">Your Age</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Height</div>
+                    <div class="detail-value">Your Height</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Religion</div>
+                    <div class="detail-value">Your Religion</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Caste</div>
+                    <div class="detail-value">Your Caste</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Complexion</div>
+                    <div class="detail-value">Your Complexion</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Location</div>
+                    <div class="detail-value">Your Location</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Hobbies</div>
+                    <div class="detail-value">Your Hobbies</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">About</div>
+                    <div class="detail-value">Your Description</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Family Details Section -->
+        <div class="section">
+            <h2 class="section-title">Family Details</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Member</th>
+                        <th>Occupation</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Father</td>
+                        <td>Your Father's Occupation</td>
+                        <td>Your Father's Details</td>
+                    </tr>
+                    <tr>
+                        <td>Mother</td>
+                        <td>Your Mother's Occupation</td>
+                        <td>Your Mother's Details</td>
+                    </tr>
+                    <tr>
+                        <td>Brother</td>
+                        <td>Your Brother's Occupation</td>
+                        <td>Your Brother's Details</td>
+                    </tr>
+                    <tr>
+                        <td>Sister</td>
+                        <td>Your Sister's Occupation</td>
+                        <td>Your Sister's Details</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Education Section -->
+        <div class="section">
+            <h2 class="section-title">Education & Career</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Qualification</th>
+                        <th>Institute</th>
+                        <th>Year</th>
+                        <th>Grade/Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Your Degree</td>
+                        <td>Your Institute</td>
+                        <td>Your Year</td>
+                        <td>Your Score</td>
+                    </tr>
+                    <tr>
+                        <td>Your High School</td>
+                        <td>Your School</td>
+                        <td>Your Year</td>
+                        <td>Your Score</td>
+                    </tr>
+                    <tr>
+                        <td>Your Secondary</td>
+                        <td>Your School</td>
+                        <td>Your Year</td>
+                        <td>Your Score</td>
+                    </tr>
+                    <tr>
+                        <td>Current Position</td>
+                        <td>Your Company</td>
+                        <td>Your Years</td>
+                        <td>Your Experience</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-content">
+            <div class="ganesha-symbol">ॐ</div>
+            <div class="footer-divider"></div>
+            <p style="font-size: 18px; margin-bottom: 15px;">जय माता दी</p>
+            <div class="footer-contact">
+                <p><strong>Contact:</strong> Your Phone | Your Email</p>
+                <p><strong>Address:</strong> Your Address</p>
+                <p style="margin-top: 20px; font-size: 12px; opacity: 0.8;">This biodata is prepared with respect and sincerity for matrimonial purposes.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slider JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        let currentSlideIndex = 0;
+
+        function changeSlide(n) {
+            showSlide(currentSlideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(currentSlideIndex = n);
+        }
+
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+
+            if (n >= slides.length) {
+                currentSlideIndex = 0;
+            }
+            if (n < 0) {
+                currentSlideIndex = slides.length - 1;
+            }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active');
+        }
+
+        // Auto-advance slides every 6 seconds
+        setInterval(() => {
+            changeSlide(1);
+        }, 6000);
+    </script>
+</body>
+</html>
